@@ -1,0 +1,35 @@
+/*--------------------------------------------------------------
+## Layout Styling
+--------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'EditorialNew';
+  src: url('/fonts/EditorialNew-Ultralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+.editorial-new {
+    font-family: "EditorialNew";
+}
+
+.f-80 {
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: -1%;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+body {
+  color: #fff;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: 1%;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+}

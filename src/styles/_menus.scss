@@ -1,0 +1,17 @@
+.menu {
+  .title {
+    width: 100%;
+    height: auto;
+  }
+  &.dinner {
+    background-color: lightcoral;
+    color: black;
+  }
+  &.wine {
+    background-color: lightgreen;
+    color: black;
+  }
+  &.bar {
+    background-color: lightblue;
+  }
+}
