@@ -13,10 +13,33 @@
     font-family: "EditorialNew";
 }
 
+.f-48 {
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: -1%;
+}
+
+.f-64 {
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: -1%;
+}
+
 .f-80 {
     font-size: 80px;
     line-height: 100%;
     letter-spacing: -1%;
+}
+
+.f-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 1%;
+}
+
+.f-black {
+  color: #161817;
 }
 
 .bold {

@@ -1,28 +1,61 @@
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 
-export default function Menu({ title, items, className }) {
+export default function Menu({
+  title,
+  items,
+  className,
+  images = [],
+  warning,
+}) {
   const sections = groupBySection(items);
 
   return (
-    <section className={`menu p30 ${className ? `${className}` : ''}`}>
-      <Image className="title" src={urlFor(title).url()} alt="" width={1000} height={200} />
-      {sections.map(({ section, items: sectionItems }) => (
-        <div key={section} className="menu-section">
-          {section && <h3 className="menu-section-title">{section}</h3>}
-          <ul className="menu-items">
-            {sectionItems.map((item, i) => (
-              <li key={i} className="menu-item flex space-between">
-                <div>
-                  <p className="bold">{item.name}</p>
-                  {item.description && <p>{item.description}</p>}
-                </div>
-                {item.price && <p className="bold">{item.price}</p>}
-              </li>
-            ))}
-          </ul>
+    <section className={`menu p25 ${className ? `${className}` : ""}`}>
+      <div className="title ratio-16-3 pos-rel">
+        <Image
+          className="bg-image contain"
+          src={urlFor(title).url()}
+          alt=""
+          width={1000}
+          height={200}
+        />
+      </div>
+      {sections.map(({ section, items: sectionItems }, i) => (
+        <div key={section}>
+          <div className="menu-section flex flex-col align-center">
+            {section && (
+              <h3 className="menu-section-title f-title">{section}</h3>
+            )}
+            <ul className="menu-items flex flex-col">
+              {sectionItems.map((item, j) => (
+                <li key={j} className="menu-item flex space-between align-end">
+                  <p className="editorial-new f-48">
+                    {item.name}
+                    <span>{item.description && ` / ${item.description}`}</span>
+                  </p>
+                  <span className="menu-item-rule" />
+                  {item.price && <p className="f-48">{item.price}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {images[i] && (
+            <div className="menu-section-image">
+              <Image
+                className="radius-8"
+                src={urlFor(images[i]).url()}
+                alt=""
+                width={600}
+                height={400}
+              />
+            </div>
+          )}
         </div>
       ))}
+      <div className="warning flex justify-center">
+        {warning && <p className="text text-center">{warning}</p>}
+      </div>
     </section>
   );
 }

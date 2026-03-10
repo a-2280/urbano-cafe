@@ -10,7 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Lenis>{children}</Lenis>
+        <Lenis>
+          {children}
+        </Lenis>
       </body>
     </html>
   );

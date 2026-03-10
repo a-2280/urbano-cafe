@@ -2,11 +2,14 @@ import { sanityFetch } from "@/sanity/lib/live";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Menus from "@/components/menus";
+import Footer from "@/components/footer";
 
 const PAGE_QUERY = `{
   "header": *[_type == "header"][0],
   "hero": *[_type == "hero"][0],
-  "menus": *[_type == "menus"][0].menus[]{ sheetName, title, imageOne, imageTwo, imageThree, warning, cssClass }
+  "menus": *[_type == "menus"][0].menus[]{ sheetName, title, imageOne, imageTwo, imageThree, warning, cssClass },
+  "footer": *[_type == "footer"][0]{ title, pressLinks, instagramLink, tiktokLink, description, copyright },
+  "siteInfo": *[_type == "header"][0]{ hours, phone, address, handle, logo }
 }`;
 
 export const revalidate = 300;
@@ -16,10 +19,13 @@ export default async function Home() {
   const menus = data?.menus ?? [];
 
   return (
-    <main>
+    <>
       <Header data={data?.header} />
-      <Hero data={data?.hero} />
-      <Menus menus={menus} />
-    </main>
+      <main>
+        <Hero data={data?.hero} />
+        <Menus menus={menus} />
+      </main>
+      <Footer data={data?.footer} siteInfo={data?.siteInfo} />
+    </>
   );
 }

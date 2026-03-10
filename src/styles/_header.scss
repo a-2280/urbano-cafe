@@ -4,4 +4,16 @@
   z-index: 100;
   position: fixed;
   left: 0px;
+  gap: var(--gap, 20px);
+
+  .ratio-16-3 {
+    width: var(--logo-width, 575px);
+    height: var(--logo-height, 108px);
+  }
+
+  .f-80 {
+    font-size: var(--font-size, 80px);
+    max-width: var(--content-width, 1350px);
+    padding-bottom: var(--content-pb, 0px);
+  }
 }
