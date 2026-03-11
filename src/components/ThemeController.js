@@ -17,6 +17,7 @@ export default function ThemeController() {
       const next = el.dataset.theme;
       if (next === activeTheme) return;
       activeTheme = next;
+      root.dataset.activeTheme = next;
       const styles = getComputedStyle(el);
       gsap.to(root, {
         "--active-theme-bg": styles.getPropertyValue("--theme-bg").trim(),

@@ -1,3 +1,15 @@
+.logo-mask {
+  width: 100%;
+  height: 100%;
+  background-color: var(--active-theme-text);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: left center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: left center;
+}
+
 .masthead {
   top: 0px;
   width: 100%;

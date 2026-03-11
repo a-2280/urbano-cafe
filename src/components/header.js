@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -92,7 +91,7 @@ export default function Header({ data }) {
       {progress >= 1 && <MobileMenuButton />}
       <div className="flex space-between">
         <Link href="/" className="logo ratio-16-3 pos-rel overflow">
-          <Image className="bg-image contain" src={urlFor(data.logo).url()} alt="Logo" width={575} height={102} />
+          <div className="logo-mask" style={{ maskImage: `url(${urlFor(data.logo).url()})`, WebkitMaskImage: `url(${urlFor(data.logo).url()})` }} />
         </Link>
         <Link className="button-primary m-hide" href={data.reservation.reservationLink}>{data.reservation.reservationText}</Link>
       </div>

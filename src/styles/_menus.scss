@@ -16,8 +16,14 @@
   }
   .menu-item-rule {
     flex: 1;
-    border-bottom: 1px solid currentColor;
-    margin: 0 5px;
+    height: 2px;
+    align-self: flex-end;
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    margin: 0 4px;
+    margin-bottom: 10px;
     @media (max-width: 768px) {
       align-self: center;
     }

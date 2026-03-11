@@ -71,7 +71,7 @@ export default function Footer({ data, siteInfo }) {
         <p className="f-title uppercase">{data.title}</p>
         <div className="flex flex-col align-center gap-7">
           {data.pressLinks.map((link, i) => (
-            <Link key={i} href={link.link} className="f-64 editorial-new">
+            <Link key={i} href={link.link} className="f-64 editorial-new z-110">
               {link.title}
             </Link>
           ))}
