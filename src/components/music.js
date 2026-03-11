@@ -7,6 +7,7 @@ import { PlayIcon, PauseIcon } from "./icons";
 export default function Music() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [heroVisible, setHeroVisible] = useState(true);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -18,9 +19,20 @@ export default function Music() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="music flex align-end gap-20">
-      <div className="ratio-1-1 pos-rel w-70px overflow">
+    <div className={`music flex align-end gap-20${footerVisible ? " footer-visible" : ""}`}>
+      <div className="album-wrapper ratio-1-1 pos-rel w-70px overflow">
         <Image
           className="album bg-image"
           src="/images/music.jpg"
@@ -35,7 +47,7 @@ export default function Music() {
       <div style={{ display: heroVisible ? "" : "none" }}>
         <p className="bold">Listen to Urbano Cafe radio</p>
         <p className="flex gap-4">
-          <span className="bold">Now Playing</span>Liberation Bells by Joe Westerland
+          <span className="bold nowrap m-pr-10px">Now Playing</span>Liberation Bells by Joe Westerland
         </p>
       </div>
     </div>

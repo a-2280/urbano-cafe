@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export default function Menu({
   title,
+  mobileTitle,
   items,
   className,
   images = [],
@@ -11,8 +12,8 @@ export default function Menu({
   const sections = groupBySection(items);
 
   return (
-    <section className={`menu p25 ${className ? `${className}` : ""}`}>
-      <div className="title ratio-16-3 pos-rel">
+    <section className={`menu p25 ${className ? `${className} theme-${className}` : ""}`} data-theme={className}>
+      <div className="title ratio-16-3 pos-rel m-hide">
         <Image
           className="bg-image contain"
           src={urlFor(title).url()}
@@ -21,6 +22,16 @@ export default function Menu({
           height={200}
         />
       </div>
+      {mobileTitle && (
+        <div className="m-title m-show">
+          <Image
+            src={urlFor(mobileTitle).url()}
+            alt=""
+            width={370}
+            height={250}
+          />
+        </div>
+      )}
       {sections.map(({ section, items: sectionItems }, i) => (
         <div key={section}>
           <div className="menu-section flex flex-col align-center">
@@ -43,7 +54,6 @@ export default function Menu({
           {images[i] && (
             <div className="menu-section-image">
               <Image
-                className="radius-8"
                 src={urlFor(images[i]).url()}
                 alt=""
                 width={600}

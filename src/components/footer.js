@@ -66,9 +66,9 @@ export default function Footer({ data, siteInfo }) {
   const daysDisplay = formatDays(siteInfo.hours.days);
 
   return (
-    <footer className="p25 f-black">
-      <div className="flex flex-col align-center gap-30 py-330px">
-        <p className="f-title">{data.title}</p>
+    <footer className="p25 theme-footer" data-theme="footer">
+      <div className="flex flex-col align-center gap-30 py-330px m-py-200px">
+        <p className="f-title uppercase">{data.title}</p>
         <div className="flex flex-col align-center gap-7">
           {data.pressLinks.map((link, i) => (
             <Link key={i} href={link.link} className="f-64 editorial-new">
@@ -78,9 +78,10 @@ export default function Footer({ data, siteInfo }) {
         </div>
       </div>
       <div className="flex-1">
-        <div className="flex gap-20 space-between pb-70px">
-          <div className="flex-1 flex gap-20">
-            <div>
+        <p className="max-300 pb-70px m-show">{data.description}</p>
+        <div className="flex gap-20 space-between pb-70px m-pb-15px">
+          <div className="flex-1 flex gap-20 m-gap-40">
+            <div className="m-hide">
               <p className="bold">{timeDisplay}</p>
               <p className="bold">{daysDisplay}</p>
               <p>{isOpen ? "Open Now" : "Closed Now"}</p>
@@ -99,8 +100,10 @@ export default function Footer({ data, siteInfo }) {
               </Link>
             </div>
           </div>
-          <p className="max-300 text-center">{data.description}</p>
-          <p className="flex-1 bold flex justify-end">{data.copyright}</p>
+          <p className="max-300 text-center m-hide">{data.description}</p>
+          <p className="flex-1 bold flex justify-end m-hide">
+            {data.copyright}
+          </p>
         </div>
         <div className="logo ratio-16-3 pos-rel overflow">
           <Image
@@ -111,6 +114,7 @@ export default function Footer({ data, siteInfo }) {
             height={102}
           />
         </div>
+        <p className="flex-1 bold flex justify-end pt-15px m-show">{data.copyright}</p>
       </div>
     </footer>
   );

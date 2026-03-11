@@ -4,6 +4,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import MobileMenuButton from "./mobileMenuButton";
 
 function formatHour(hour) {
   if (hour === 0) return "Midnight";
@@ -73,24 +74,30 @@ export default function Header({ data }) {
 
   const logoWidth = Math.round(575 - (575 - 200) * progress);
   const fontSize = Math.round((80 - (80 - 14) * progress) * 10) / 10;
+  const mobileFontSize = Math.max(0, Math.round((36 - 36 * Math.min(1, progress * 2)) * 10) / 10);
+  const mobileFontRatio = Math.max(0, Math.round((1 - progress * 2) * 100) / 100);
+  const mobileInfoSize = Math.max(0, Math.round((16 - 16 * progress) * 10) / 10);
+  const mobileInfoOpacity = Math.max(0, Math.round((1 - progress * 2) * 100) / 100);
   const gap = Math.round((20 - 10 * progress) * 10) / 10;
   const logoHeight = Math.round((108 - (108 - 38) * progress) * 10) / 10;
   const contentWidth = Math.round(1350 - (1350 - 330) * progress);
   const contentPb = Math.round(30 * progress * 10) / 10;
+  const mobilePt = Math.round(16 * progress * 10) / 10;
 
   const timeDisplay = `${formatHour(data.hours.openTime)} to ${formatHour(data.hours.closeTime)}`;
   const daysDisplay = formatDays(data.hours.days);
 
   return (
-    <header className="masthead p25 flex flex-col gap-20" style={{ "--logo-width": `${logoWidth}px`, "--logo-height": `${logoHeight}px`, "--font-size": `${fontSize}px`, "--gap": `${gap}px`, "--content-width": `${contentWidth}px`, "--content-pb": `${contentPb}px` }}>
+    <header className="masthead p25 flex flex-col gap-20 m-p16 m-gap-15" style={{ "--logo-width": `${logoWidth}px`, "--logo-height": `${logoHeight}px`, "--font-size": `${fontSize}px`, "--mobile-font-size": `${mobileFontSize}px`, "--mobile-font-ratio": mobileFontRatio, "--gap": `${gap}px`, "--content-width": `${contentWidth}px`, "--content-pb": `${contentPb}px`, "--mobile-info-size": `${mobileInfoSize}px`, "--mobile-info-opacity": mobileInfoOpacity, "--mobile-pt": `${mobilePt}px` }}>
+      {progress >= 1 && <MobileMenuButton />}
       <div className="flex space-between">
         <Link href="/" className="logo ratio-16-3 pos-rel overflow">
           <Image className="bg-image contain" src={urlFor(data.logo).url()} alt="Logo" width={575} height={102} />
         </Link>
-        <Link className="button-primary" href={data.reservation.reservationLink}>{data.reservation.reservationText}</Link>
+        <Link className="button-primary m-hide" href={data.reservation.reservationLink}>{data.reservation.reservationText}</Link>
       </div>
-      <p className={`content f-80 max-1350${progress < 1 ? " editorial-new" : ""}`}>{data.content}</p>
-      <div className="flex gap-20">
+      <p className={`content f-80 max-1350${mobileFontSize <= 0 ? " m-hidden" : ""}${progress < 1 ? " editorial-new" : ""}`}>{data.content}</p>
+      <div className={`flex gap-20 header-info${mobileInfoSize <= 0 ? " m-hidden" : ""}`}>
         <div>
           <p className="bold">{timeDisplay}</p>
           <p className="bold">{daysDisplay}</p>

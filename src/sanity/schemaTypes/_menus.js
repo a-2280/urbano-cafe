@@ -27,6 +27,12 @@ export const menus = defineType({
                     validation: (rule) => rule.required()
                 }),
                 defineField({
+                    name: "mobileTitle",
+                    title: "Mobile Title",
+                    type: "image",
+                    description: "Logo image shown on mobile devices"
+                }),
+                defineField({
                     name: "cssClass",
                     title: "CSS Class",
                     type: "string",

@@ -40,6 +40,10 @@ a {
   flex-wrap: wrap;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -132,6 +136,10 @@ a {
 
 .p40 {
   padding: 40px;
+}
+
+.pt-15px {
+  padding-top: 15px;
 }
 
 .pb-70px {
@@ -291,5 +299,53 @@ div.bg-image,
 .m-100 {
   @media (max-width: 768px) {
     width: 100%;
+  }
+}
+
+.m-flex-col {
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.m-p16 {
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}
+
+.m-hidden {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.m-gap-15 {
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+}
+
+.m-gap-40 {
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
+}
+
+.m-pb-15px {
+  @media (max-width: 768px) {
+    padding-bottom: 15px;
+  }
+}
+
+.m-pr-10px {
+  @media (max-width: 768px) {
+    padding-right: 10px;
+  }
+}
+
+.m-py-200px {
+  @media (max-width: 768px) {
+    padding: 200px 0;
   }
 }

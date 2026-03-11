@@ -17,12 +17,18 @@
     font-size: 48px;
     line-height: 100%;
     letter-spacing: -1%;
+    @media (max-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .f-64 {
   font-size: 64px;
   line-height: 100%;
   letter-spacing: -1%;
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 }
 
 .f-80 {
@@ -47,7 +53,8 @@
 }
 
 body {
-  color: #fff;
+  color: var(--active-theme-text);
+  background-color: var(--active-theme-bg);
   font-size: 14px;
   line-height: 110%;
   letter-spacing: 1%;

@@ -1,0 +1,29 @@
+@use 'sass:map';
+
+@property --active-theme-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e34f25;
+}
+
+@property --active-theme-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+$themes: (
+  "dinner": ("bg": #e34f25, "text": #ffffff),
+  "wine":   ("bg": #f4f2ee, "text": #161817),
+  "bar":    ("bg": #6d1f1f, "text": #a7a7a7),
+  "footer": ("bg": #C9A96E, "text": #161817),
+);
+
+@each $name, $values in $themes {
+  .theme-#{$name} {
+    --theme-bg: #{map.get($values, "bg")};
+    --theme-text: #{map.get($values, "text")};
+    background-color: var(--active-theme-bg);
+    color: var(--active-theme-text);
+  }
+}

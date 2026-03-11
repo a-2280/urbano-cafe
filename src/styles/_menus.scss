@@ -2,6 +2,13 @@
   .title {
     margin-bottom: 150px;
   }
+  .m-title {
+    margin-bottom: 50px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
   .menu-items {
     width: 100%;
     max-width: 924px;
@@ -11,14 +18,23 @@
     flex: 1;
     border-bottom: 1px solid currentColor;
     margin: 0 5px;
+    @media (max-width: 768px) {
+      align-self: center;
+    }
   }
   .menu-section-title {
     padding-bottom: 30px;
+    @media (max-width: 768px) {
+      padding-bottom: 20px;
+    }
   }
   .menu-section-image {
     display: flex;
     justify-content: center;
     margin: 170px 0;
+    @media (max-width: 768px) {
+    margin: 100px 0;
+  }
 
     img {
       width: auto;
@@ -31,17 +47,5 @@
     .text {
       max-width: 410px;
     }
-  }
-  &.dinner {
-    background-color: #E34F25;
-    color: rgb(255, 255, 255);
-  }
-  &.wine {
-    background-color: #F4F2EE;
-    color: #161817;
-  }
-  &.bar {
-    background-color: #6D1F1F;
-    color: #A7A7A7;
   }
 }

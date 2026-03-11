@@ -1,5 +1,13 @@
 footer {
-    background-color: #C9A96E;
+    background-color: var(--active-theme-bg);
+    color: var(--active-theme-text);
+
+    @media (max-width: 768px) {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 
     .logo img {
         filter: brightness(0) saturate(100%) invert(8%) sepia(9%) saturate(277%) hue-rotate(100deg) brightness(94%) contrast(91%);

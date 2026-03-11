@@ -5,6 +5,6 @@ export default async function Menus({ menus }) {
   const menuItems = await Promise.all(menus.map((m) => getMenuItems(m.sheetName)));
 
   return menus.map((menu, i) => (
-    <Menu key={menu.sheetName} title={menu.title} className={menu.cssClass} items={menuItems[i]} images={[menu.imageOne, menu.imageTwo, menu.imageThree].filter(Boolean)} warning={menu.warning} />
+    <Menu key={menu.sheetName} title={menu.title} mobileTitle={menu.mobileTitle} className={menu.cssClass} items={menuItems[i]} images={[menu.imageOne, menu.imageTwo, menu.imageThree].filter(Boolean)} warning={menu.warning} />
   ));
 }
