@@ -34,13 +34,25 @@ export default function Menu({
       )}
       {sections.map(({ section, items: sectionItems }, i) => (
         <div key={section}>
+          {images[i] ? (
+            <div className="menu-section-image">
+              <Image
+                src={urlFor(images[i]).url()}
+                alt=""
+                width={600}
+                height={400}
+              />
+            </div>
+          ) : (
+            <div className="menu-section-spacer" />
+          )}
           <div className="menu-section flex flex-col align-center">
             {section && (
               <h3 className="menu-section-title f-title">{section}</h3>
             )}
             <ul className="menu-items flex flex-col">
               {sectionItems.map((item, j) => (
-                <li key={j} className="menu-item flex space-between align-end">
+                <li key={j} className="menu-item flex space-between align-baseline">
                   <p className="editorial-new f-48">
                     {item.name}
                     <span>{item.description && ` / ${item.description}`}</span>
@@ -51,16 +63,6 @@ export default function Menu({
               ))}
             </ul>
           </div>
-          {images[i] && (
-            <div className="menu-section-image">
-              <Image
-                src={urlFor(images[i]).url()}
-                alt=""
-                width={600}
-                height={400}
-              />
-            </div>
-          )}
         </div>
       ))}
       <div className="warning flex justify-center">

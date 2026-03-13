@@ -4,10 +4,17 @@
   padding: 20px;
   bottom: 0;
   left: 0;
+  transition: opacity 0.5s ease;
   @media (max-width: 768px) {
     padding: 16px;
     transition: opacity 0.3s ease;
     &.footer-visible {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  @media (min-width: 769px) {
+    [data-active-theme="footer"] & {
       opacity: 0;
       pointer-events: none;
     }

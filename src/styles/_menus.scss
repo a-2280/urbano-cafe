@@ -17,16 +17,12 @@
   .menu-item-rule {
     flex: 1;
     height: 2px;
-    align-self: flex-end;
+    align-self: baseline;
     background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
     background-size: 10px 2px;
     background-repeat: repeat-x;
     background-position: 0 50%;
     margin: 0 4px;
-    margin-bottom: 10px;
-    @media (max-width: 768px) {
-      align-self: center;
-    }
   }
   .menu-section-title {
     padding-bottom: 30px;
@@ -48,7 +44,11 @@
       height: auto;
     }
   }
+  .menu-section-spacer {
+    height: 100px;
+  }
   .warning {
+    margin-top: 30px;
     margin-bottom: 145px;
     .text {
       max-width: 410px;

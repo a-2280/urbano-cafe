@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { urlFor } from "@/sanity/lib/image";
@@ -79,7 +78,7 @@ export default function Footer({ data, siteInfo }) {
       </div>
       <div className="flex-1">
         <p className="max-300 pb-70px m-show">{data.description}</p>
-        <div className="flex gap-20 space-between pb-70px m-pb-15px">
+        <div className="flex gap-20 space-between pb-60px m-pb-15px">
           <div className="flex-1 flex gap-20 m-gap-40">
             <div className="m-hide">
               <p className="bold">{timeDisplay}</p>
@@ -106,13 +105,7 @@ export default function Footer({ data, siteInfo }) {
           </p>
         </div>
         <div className="logo ratio-16-3 pos-rel overflow">
-          <Image
-            className="bg-image contain"
-            src={urlFor(siteInfo.logo).url()}
-            alt="Logo"
-            width={575}
-            height={102}
-          />
+          <div className="logo-mask" style={{ maskImage: `url(${urlFor(siteInfo.logo).url()})`, WebkitMaskImage: `url(${urlFor(siteInfo.logo).url()})` }} />
         </div>
         <p className="flex-1 bold flex justify-end pt-15px m-show">{data.copyright}</p>
       </div>

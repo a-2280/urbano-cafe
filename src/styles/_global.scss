@@ -60,6 +60,10 @@ a {
   align-items: flex-end;
 }
 
+.align-baseline {
+  align-items: baseline;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -140,6 +144,10 @@ a {
 
 .pt-15px {
   padding-top: 15px;
+}
+
+.pb-60px {
+  padding-bottom: 60px;
 }
 
 .pb-70px {
