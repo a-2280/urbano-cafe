@@ -46,6 +46,7 @@ function isOpenNow(openTime, closeTime, days) {
 
 export default function Footer({ data, siteInfo }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const check = () =>
@@ -86,17 +87,24 @@ export default function Footer({ data, siteInfo }) {
               <p>{isOpen ? "Open Now" : "Closed Now"}</p>
             </div>
             <div>
-              <p>{siteInfo.phone}</p>
+              <a href={siteInfo.phone?.link}>{siteInfo.phone?.title}</a>
               <p>{siteInfo.address}</p>
               <p>{siteInfo.handle}</p>
             </div>
             <div className="flex flex-col">
-              <Link className="bold" href={data.instagramLink}>
+              <Link className="bold" href={data.instagramLink} target="_blank" rel="noopener noreferrer">
                 Instagram
               </Link>
-              <Link className="bold" href={data.tiktokLink}>
-                Tik-tok
-              </Link>
+              <button
+                className="bold"
+                onClick={() => {
+                  navigator.clipboard.writeText(data.careersLink || "");
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+              >
+                {copied ? "Copied" : "Careers"}
+              </button>
             </div>
           </div>
           <p className="max-300 text-center m-hide">{data.description}</p>

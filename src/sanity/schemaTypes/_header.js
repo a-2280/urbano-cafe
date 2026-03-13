@@ -75,7 +75,19 @@ export const header = defineType({
     defineField({
       name: "phone",
       title: "Phone Number",
-      type: "string",
+      type: "object",
+      fields: [
+        defineField({
+          name: "title",
+          title: "Display Text",
+          type: "string",
+        }),
+        defineField({
+          name: "link",
+          title: "Link",
+          type: "string",
+        }),
+      ],
     }),
     defineField({
       name: "address",

@@ -9,7 +9,7 @@ const PAGE_QUERY = `{
   "header": *[_type == "header"][0],
   "hero": *[_type == "hero"][0],
   "menus": *[_type == "menus"][0].menus[]{ sheetName, title, mobileTitle, imageOne, imageTwo, imageThree, warning, cssClass },
-  "footer": *[_type == "footer"][0]{ title, pressLinks, instagramLink, tiktokLink, description, copyright },
+  "footer": *[_type == "footer"][0]{ title, pressLinks, instagramLink, careersLink, description, copyright },
   "siteInfo": *[_type == "header"][0]{ hours, phone, address, handle, logo }
 }`;
 

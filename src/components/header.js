@@ -103,7 +103,7 @@ export default function Header({ data }) {
           <p>{isOpen ? "Open Now" : "Closed Now"}</p>
         </div>
         <div>
-          <p>{data.phone}</p>
+          <a href={data.phone?.link}>{data.phone?.title}</a>
           <p>{data.address}</p>
           <p>{data.handle}</p>
         </div>
