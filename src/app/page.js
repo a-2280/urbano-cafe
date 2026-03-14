@@ -4,6 +4,8 @@ import Hero from "@/components/hero";
 import Menus from "@/components/menus";
 import Footer from "@/components/footer";
 import ThemeController from "@/components/ThemeController";
+import MobileMenu from "@/components/mobileMenu";
+import { MobileMenuProvider } from "@/components/MobileMenuContext";
 
 const PAGE_QUERY = `{
   "header": *[_type == "header"][0],
@@ -20,14 +22,15 @@ export default async function Home() {
   const menus = data?.menus ?? [];
 
   return (
-    <>
+    <MobileMenuProvider>
       <ThemeController />
       <Header data={data?.header} />
       <main>
         <Hero data={data?.hero} reservation={data?.header?.reservation} />
         <Menus menus={menus} />
+        <MobileMenu data={data?.header} />
       </main>
       <Footer data={data?.footer} siteInfo={data?.siteInfo} />
-    </>
+    </MobileMenuProvider>
   );
 }

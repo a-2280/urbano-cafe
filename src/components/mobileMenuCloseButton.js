@@ -2,14 +2,14 @@
 
 import { useMobileMenu } from "./MobileMenuContext";
 
-export default function MobileMenuButton() {
+export default function MobileMenuCloseButton() {
   const { setIsOpen } = useMobileMenu();
   return (
     <button
-      className="mobile-menu-button m-show"
-      onClick={() => setIsOpen(true)}
+      className="button-secondary m-show"
+      onClick={() => setIsOpen(false)}
     >
-      Menu
+      Close
     </button>
   );
 }

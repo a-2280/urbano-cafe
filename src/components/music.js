@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { PlayIcon, PauseIcon } from "./icons";
 
-export default function Music() {
+export default function Music({ alwaysVisible = false }) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [heroVisible, setHeroVisible] = useState(true);
   const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
+    if (alwaysVisible) return;
     const onScroll = () => {
       const hero = document.getElementById("hero");
       if (!hero) return;
@@ -17,9 +18,10 @@ export default function Music() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysVisible]);
 
   useEffect(() => {
+    if (alwaysVisible) return;
     const footer = document.querySelector("footer");
     if (!footer) return;
     const observer = new IntersectionObserver(
@@ -28,10 +30,10 @@ export default function Music() {
     );
     observer.observe(footer);
     return () => observer.disconnect();
-  }, []);
+  }, [alwaysVisible]);
 
   return (
-    <div className={`music flex align-end gap-20${footerVisible ? " footer-visible" : ""}`}>
+    <div className={`music flex align-end gap-20${!alwaysVisible && footerVisible ? " footer-visible" : ""}`}>
       <div className="album-wrapper ratio-1-1 pos-rel w-70px overflow">
         <Image
           className="album bg-image"
@@ -44,7 +46,7 @@ export default function Music() {
           {isPlaying ? <PauseIcon size={28} color="white" /> : <PlayIcon size={28} color="white" />}
         </div>
       </div>
-      <div style={{ display: heroVisible ? "" : "none" }}>
+      <div style={{ display: alwaysVisible || heroVisible ? "" : "none" }}>
         <p className="bold">Listen to Urbano Cafe radio</p>
         <p className="flex gap-4">
           <span className="bold nowrap m-pr-10px">Now Playing</span>Liberation Bells by Joe Westerland

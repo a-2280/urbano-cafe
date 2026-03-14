@@ -1,0 +1,11 @@
+.mobile-menu {
+  background-color: var(--active-theme-bg);
+  color: var(--active-theme-text);
+  height: 100vh;
+  width: 100vw;
+  z-index: 150;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px;
+}
